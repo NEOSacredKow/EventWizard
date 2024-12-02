@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * The checkbox template for the wizard.
+ *
+ * @since 1.0.0
+ *
+ * @var string   $id             The field ID
+ * @var string   $label          The field label
+ * @var string   $value          The field value
+ * @var string   $description    The field description
+ * @var array    $dependency     The dependency attributes
+ * @var string   $classes        The field classes
+ * @var string   $data           The field data attributes
+ * @var string   $checked        The checked value
+ */
+?>
+<div class="tribe-events-wizard__input-wrapper">
+
+    <input
+            type="checkbox"
+            id="<?php echo esc_attr( $id ); ?>"
+            name="<?php echo esc_attr( $name ); ?>"
+            value="<?php echo esc_attr( $value ); ?>"
+            <?php
+            // Add checked attribute.
+            if ( ! empty( $checked ) ) {
+                echo 'checked';
+            }
+            ?>
+            <?php
+            // Add data attributes.
+            if ( ! empty( $data ) ) {
+                foreach ( $data as $key => $value ) {
+                    echo 'data-' . esc_attr( $key ) . '="' . esc_attr( $value ) . '" ';
+                }
+            }
+            ?>
+            <?php tribe_classes( $classes ); ?>
+    />
+
+    <label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?></label>
+
+    <?php if ( ! empty( $description ) ) : ?>
+        <p class="tribe-events-wizard__input-description"><?php echo esc_html( $description ); ?></p>
+    <?php endif; ?>
+
+</div>
